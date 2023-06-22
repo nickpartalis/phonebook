@@ -27,8 +27,10 @@ const persons = [
   }
 ]
 
+// MIDDLEWARE
 app.use(express.json())
 app.use(cors())
+app.use(express.static("build"))
 
 morgan.token("postBody", (req, res) => {
   if (req.method === "POST") {
@@ -47,6 +49,7 @@ app.use(morgan((tokens, req, res) => {
   ].join(" ")
 }))
 
+// ROUTES
 app.get("/", (req, res) => {
   res.send("Phonebook API")
 })
